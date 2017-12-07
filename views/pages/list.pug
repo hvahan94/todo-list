@@ -1,0 +1,20 @@
+extends ../layouts/app.pug
+
+block content
+    .container
+        .row
+            .col-lg-12.text-center.todo-list
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') First Name
+                            th(scope='col') Last Name
+                            th(scope='col') Username
+                    tbody
+                        each todo  in todoList
+                            tr
+                                th(scope='row')=todo.id
+                                td=todo.first_name
+                                td=todo.last_name
+                                td=todo.username

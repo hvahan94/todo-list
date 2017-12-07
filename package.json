@@ -1,0 +1,23 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "express-route-controller": "0.0.4",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.5"
+  },
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "express": "^4.16.2",
+    "pug": "^2.0.0-rc.4"
+  }
+}
