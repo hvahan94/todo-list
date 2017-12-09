@@ -1,26 +1,24 @@
 /*
  |--------------------------------------------------------------------------
- | Import app root path
+ | Import the mongoose module.
  |--------------------------------------------------------------------------
  */
-import appRootPath from 'app-root-path';
-
-let { resolve } = appRootPath;
+import mongoose from 'mongoose';
 
 /*
  |--------------------------------------------------------------------------
- | Import routes.
+ | Get Mongoose to use the global promise library.
  |--------------------------------------------------------------------------
  */
-import routes from './users.routes';
+mongoose.Promise = global.Promise;
 
 /*
  |--------------------------------------------------------------------------
- | Configuration for express-route-controller
+ | Export default mongoose connection.
  |--------------------------------------------------------------------------
  */
-
-export default {
-    controllers: resolve('controllers'),
-    routes: routes
-};
+export function connect() {
+    return mongoose.connect(process.env.MLAB, {
+        useMongoClient: true
+    })
+}

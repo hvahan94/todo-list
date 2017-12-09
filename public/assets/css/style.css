@@ -1,4 +1,4 @@
-.todo-list {
+.todo-list, form.add-a-user {
     position: relative;
     top: 80px;
 }
@@ -11,4 +11,10 @@ body {
     body {
         padding-top: 56px;
     }
+}
+
+.remove-row > i {
+    position: relative;
+    left: 10px;
+    color: #f14242;
 }

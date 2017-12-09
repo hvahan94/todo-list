@@ -3,18 +3,24 @@ extends ../layouts/app.pug
 block content
     .container
         .row
-            .col-lg-12.text-center.todo-list
+            .col-lg-12.text-center.user-list
                 table.table
                     thead
                         tr
-                            th(scope='col') #
                             th(scope='col') First Name
                             th(scope='col') Last Name
-                            th(scope='col') Username
+                            th(scope='col') Age
+                            th(scope='col') Actions
                     tbody
-                        each todo  in todoList
+                        each user  in users
                             tr
-                                th(scope='row')=todo.id
-                                td=todo.first_name
-                                td=todo.last_name
-                                td=todo.username
+                                td=user.first_name
+                                td=user.last_name
+                                td=user.age
+                                td
+                                    a.on-default.edit-row(href='#')
+                                        i.mdi.mdi-lead-pencil
+                                    a.on-default.remove-row(href='#', data-id=user.id)
+                                        i.mdi.mdi-account-remove
+
+

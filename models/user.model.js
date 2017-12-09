@@ -1,26 +1,24 @@
 /*
  |--------------------------------------------------------------------------
- | Import app root path
+ | Import mongoose's Schema.
  |--------------------------------------------------------------------------
  */
-import appRootPath from 'app-root-path';
-
-let { resolve } = appRootPath;
+import moongoose, { Schema } from 'mongoose';
 
 /*
  |--------------------------------------------------------------------------
- | Import routes.
+ | Set up schema for user.
  |--------------------------------------------------------------------------
  */
-import routes from './users.routes';
+const userSchema = new Schema({
+    first_name: String,
+    last_name: String,
+    age: Number,
+});
 
 /*
  |--------------------------------------------------------------------------
- | Configuration for express-route-controller
+ | Export user's table
  |--------------------------------------------------------------------------
  */
-
-export default {
-    controllers: resolve('controllers'),
-    routes: routes
-};
+export default moongoose.model('user', userSchema);

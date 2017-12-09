@@ -1,22 +1,29 @@
 /*
  |--------------------------------------------------------------------------
- | Call the packages
+ | Import the packages
  |--------------------------------------------------------------------------
  */
-require('dotenv').config();
+import express    from 'express';
+import bodyParser from 'body-parser';
+import morgan     from 'morgan';
+import path       from 'path';
+import erc        from 'express-route-controller';
+import rootPath   from 'app-root-path';
+import dotdev     from 'dotenv';
+
+const app = express();
+dotdev.config();
 
 /*
  |--------------------------------------------------------------------------
- | Call the packages
+ | Import and set up default mongoose connection.
  |--------------------------------------------------------------------------
  */
-const express    = require('express');
-const bodyParser = require('body-parser');
-const morgan     = require('body-parser');
-const path       = require('path');
-const app        = express();
-const erc        = require('express-route-controller');
-const rootPath   = require('app-root-path');
+import { connect } from './db';
+connect()
+    .then(() => {
+        console.log('connected to MLAB')
+    });
 
 /*
  |--------------------------------------------------------------------------
@@ -30,6 +37,7 @@ const rootPath   = require('app-root-path');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("compined"));
+
 app.use(express.static(rootPath.resolve('public')));
 
 /*
@@ -45,7 +53,7 @@ app.set('views', path.join(__dirname, 'views'));
  | Initialize routes
  |--------------------------------------------------------------------------
  */
-const routeControl = require('./routes');
+import routeControl from './routes';
 erc(app, routeControl);
 
 /*
