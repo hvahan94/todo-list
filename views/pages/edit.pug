@@ -1,0 +1,16 @@
+extends ../layouts/app.pug
+
+block content
+    .container
+        form(action='/update/' + user.id, method='post', class='add-a-user')
+            .form-group
+                label(for='fisrt_name') First Name
+                input#fisrt_name.form-control(value=user.first_name, type='text', name='first_name' aria-describedby='emailHelp', placeholder='Enter First Name')
+            .form-group
+                label(for='last_name') Last Name
+                input#last_name.form-control(value=user.last_name, type='text', name='last_name' placeholder='Enter Last Name')
+            .form-group
+                label(for='age') Age
+                input#age.form-control(value=user.age, type='number', name='age', placeholder='Enter Age')
+            button.btn.btn-primary(type='submit') Submit
+

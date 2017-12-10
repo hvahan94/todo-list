@@ -18,7 +18,7 @@ block content
                                 td=user.last_name
                                 td=user.age
                                 td
-                                    a.on-default.edit-row(href='#')
+                                    a.on-default.edit-row(href='edit/' + user.id)
                                         i.mdi.mdi-lead-pencil
                                     a.on-default.remove-row(href='#', data-id=user.id)
                                         i.mdi.mdi-account-remove

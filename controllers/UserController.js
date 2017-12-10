@@ -26,8 +26,25 @@ class UserController {
      * @param req
      * @param res
      */
-    async add(req, res) {
+    async add (req, res) {
         res.render('pages/add.pug');
+    }
+
+    /**
+     *  Show edit user page.
+     *
+     * @param req
+     * @param res
+     */
+    async edit (req, res) {
+        let { userId } = req.params;
+
+        User.findOne({_id: userId})
+            .then((user) => {
+                res.render('pages/edit.pug', { user });
+            })
+            .catch((e) => res.status(400).send(e))
+
     }
 
     /**
@@ -51,6 +68,23 @@ class UserController {
         .save()
         .then(res.redirect('/'))
         .catch((e) => res.status(400).send(e))
+    }
+
+    /**
+     *  Update user by id.
+     *
+     * @param req
+     * @param res
+     */
+    async update (req, res)
+    {
+        const { userId } = req.params;
+        const { first_name, last_name, age} = req.body;
+
+        User.findOne({_id: userId})
+            .update({ first_name, last_name, age})
+            .then(res.redirect('/'))
+            .catch((e) => res.status(400).send(e))
     }
 
     /**
